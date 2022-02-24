@@ -1,12 +1,26 @@
+setTimeout(function() {
+  $('#preloader').fadeOut('slow', function() {
+    $(this).remove();
+  });
+}, 20);
+
+
+//===============
 const searchFood=()=>{
     const searchInput=document.getElementById('searchInput');
     const searchText=searchInput.value;
     
     searchInput.value='';
+   if(searchText== "" || searchText
+   >0||0>searchText){
+    alert("hgiuh")
+   }
+   else{
     const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
     fetch(url)
     .then(res=>res.json())
     .then(data=>dispalyfood(data.meals))
+   }
     
 }
 const dispalyfood=(foods)=>{
