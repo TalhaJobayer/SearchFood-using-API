@@ -4,19 +4,25 @@ const searchFood=()=>{
    
     // console.log(serchText);
     serchInput.value="";
-    const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${serchInput.value}`
+    
+    const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${serchText}`
     fetch(url)
     .then(res=>res.json())
     .then(data=>dispalyfood(data.meals))
+
+    
     
   
 }
 
 const dispalyfood=(foods)=>{
     const div1=document.getElementById('foodInfo');
-          for(singlefood of foods) {
+   
+          foods.forEach(singlefood => {
+            
+         
         // console.log(singlefood);
-
+        
     const div2=document.createElement('div')
     div2.innerHTML=`
     <div class="col">
@@ -34,6 +40,8 @@ const dispalyfood=(foods)=>{
   </div>
 
                  `
+               
                  div1.appendChild(div2)
-};
+                 
+          });
 }
